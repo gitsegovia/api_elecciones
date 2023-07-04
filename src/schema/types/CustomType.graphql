@@ -1,0 +1,30 @@
+scalar DateTime
+
+input OptionsInput {
+  orderBy: String
+  direction: String
+  search: String
+  country: String
+  area_level_1: String
+  area_level_2: String
+  area_level_3: String
+  limit: Int
+  offset: Int
+}
+
+input OptionsSearchFilter {
+  orderBy: String
+  direction: String
+  limit: Int
+  offset: Int
+  search: String
+  dateStart: DateTime
+  dateEnd: DateTime
+}
+
+input OptionsPageInput {
+  orderBy: String
+  direction: String
+  limit: Int
+  offset: Int
+}

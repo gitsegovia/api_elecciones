@@ -1,0 +1,36 @@
+type State {
+  id: ID!
+  code: Int!
+  name: String!
+  iso: String!
+  Municipality: [Municipality!]
+}
+
+type Municipality {
+  id: ID!
+  code: Int!
+  name: String!
+  State: State!
+  Parish: [Parish!]
+}
+
+type Parish {
+  id: ID!
+  code: Int!
+  name: String!
+  Municipality: Municipality!
+}
+
+type Query {
+  getListState: [State]
+  getListAllMunicipality: [Municipality!]
+  getListMunicipalityByState(stateId: ID!): [Municipality!]
+  getListAllParish: [Parish!]
+  getListParishByMunicipality(municipalityId: ID!): [Parish!]
+}
+
+type Mutation {
+  insertState: Boolean
+  insertMunicipality: Boolean
+  insertParish: Boolean
+}

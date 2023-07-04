@@ -1,0 +1,90 @@
+type User {
+  id: ID!
+  username: String
+  password: String!
+  pin: String
+  privilege: String!
+  role: String!
+  active: Boolean!
+  typeSuspension: String
+  reasonSuspension: String
+  tokenActivation: String
+  numberUser: Int  
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  Employee: Employee!
+}
+
+type AuthPayLoad {
+  token: String!
+  userId: ID!
+  privilege: String!
+  role: String!
+  employeeId: ID
+}
+
+type Employee {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  dni: String!
+  gender: String!
+  phoneNumber: String!
+  photo: String!
+  dniImg: String!
+  User: User!
+}
+
+type Query {
+  getListEmployeesDashboard: [User!]
+}
+
+type Mutation {
+  login(input: LoginInput!): AuthPayLoad!
+  checkToken(token: String): AuthPayLoad!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+# TODO aqui esta la documentacion como agrupar
+# let query = {
+#       attributes: [
+#         [
+#           sequelize.fn('date_trunc', 'day', sequelize.col('start_date')),
+#           'date'
+#         ],
+#         [sequelize.fn('count','*'),'count']
+#       ],
+#       group: [
+#         sequelize.col('date')
+#       ],
+#       where: {
+#         start_date: {
+#           [Op.gte]: new Date("2018-03-01"),
+#           [Op.lt]: new Date("2018-04-01")
+#         }
+#       }
+#     };
+# let x1 = await Promise.all(
+#               contr.ContractProduct.map(async product => {
+#                 if (product.promotional) {
+#                   productPromotional = product.productNameApp;
+#                 }
+#                 let x2 = await Promise.all(
+#                   product.PurchaseProduct.map(purchase => {
+#                     if (
+#                       purchase.status === 'Available' ||
+#                       purchase.status === 'Used' ||
+#                       purchase.status === 'Selling'
+#                     ) {
+#                       sellCount++;
+#                       sellAmount += parseFloat(product.priceOffert);
+#                     }
+#                     return 2;
+#                   })
+#                 );
+#                 return 1;
+#               })
