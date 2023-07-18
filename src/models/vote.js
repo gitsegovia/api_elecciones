@@ -11,6 +11,13 @@ export default (sequelize) => {
         },
         as: 'PollingPlace',
       });
+      Vote.belongsTo(models.Parish, {
+        foreignKey: {
+          name: 'parishId',
+          field: 'parishId'
+        },
+        as: 'Parish',
+      });
       Vote.belongsTo(models.PoliticalParty, {
         foreignKey: {
           name: 'politicalPartyId',
@@ -33,6 +40,10 @@ export default (sequelize) => {
         allowNull: true,
         type: DataTypes.INTEGER
       },
+      period: {
+        allowNull: true,
+        type: DataTypes.STRING
+      }
     },
     {
       sequelize,

@@ -30,7 +30,7 @@ type Query {
 }
 
 type Mutation {
-  insertState: Boolean
-  insertMunicipality: Boolean
-  insertParish: Boolean
+  insertDataState: Boolean
+  insertDataMunicipality: Boolean
+  insertDataParish: Boolean
 }

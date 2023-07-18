@@ -1,0 +1,39 @@
+type Vote {
+  id: ID!
+  count: Int!
+  period: String!
+  Parish: Parish!
+  PollingPlace: PollingPlace!
+  PoliticalParty: PoliticalParty!
+}
+
+type Ubch {
+  id: ID!
+  nameRepresentative: String!
+  numberPhone: String!
+  PollingPlace: PollingPlace!
+}
+
+type Candidate {
+  id: ID!
+  name: String!
+  PoliticalPartyOwner: PoliticalParty!
+  PoliticalParty: [PoliticalParty!]
+}
+
+type Query {
+  getAllVoteByLocation(input: GetAllVoteByLocationInput!): [Vote]
+}
+
+type Mutation {
+  insertData2000: Boolean
+  insertData2006: Boolean
+  insertData2012: Boolean
+}
+
+input GetAllVoteByLocationInput {
+  period: String!
+  parishId: ID
+  municipalityId: ID
+  stateId: ID
+}

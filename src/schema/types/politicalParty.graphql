@@ -1,0 +1,12 @@
+type PoliticalParty {
+  id: ID!
+  name: String!
+  iso: String!
+  Vote: Vote!
+  Candidate: Candidate!
+  CandidateOwner: Candidate!
+}
+
+type Mutation {
+  insertDataPoliticalParty: Boolean
+}

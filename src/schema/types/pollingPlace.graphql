@@ -1,0 +1,14 @@
+type PollingPlace {
+  id: ID!
+  name: String!
+  address: String!
+  latitude: Float
+  longitude: Float
+  Parish: Parish!
+  Ubch: Ubch!
+  Vote: [Vote!]
+}
+
+type Mutation {
+  insertDataPollingPlace: Boolean
+}
