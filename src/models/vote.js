@@ -47,6 +47,10 @@ export default (sequelize) => {
         allowNull: true,
         type: DataTypes.INTEGER
       },
+      period: {
+        allowNull: true,
+        type: DataTypes.STRING
+      }
     },
     {
       sequelize,
