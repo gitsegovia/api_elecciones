@@ -11,6 +11,13 @@ export default (sequelize) => {
         },
         as: 'PoliticalPartyOwner',
       });
+      Candidate.belongsTo(models.Period, {
+        foreignKey: {
+          name: 'periodId',
+          field: 'periodId'
+        },
+        as: 'Period',
+      });
       Candidate.hasMany(models.PoliticalParty, {
         foreignKey: {
           name: 'candidateId',

@@ -14,12 +14,6 @@ type Ubch {
   PollingPlace: PollingPlace!
 }
 
-type Candidate {
-  id: ID!
-  name: String!
-  PoliticalPartyOwner: PoliticalParty!
-  PoliticalParty: [PoliticalParty!]
-}
 
 type Query {
   getAllVoteByLocation(input: GetAllVoteByLocationInput!): [Vote]

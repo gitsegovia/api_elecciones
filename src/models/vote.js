@@ -25,6 +25,13 @@ export default (sequelize) => {
         },
         as: 'PoliticalParty',
       });
+      Vote.belongsTo(models.Period, {
+        foreignKey: {
+          name: 'periodId',
+          field: 'periodId'
+        },
+        as: 'Period',
+      });
     }
   }
 
@@ -40,10 +47,6 @@ export default (sequelize) => {
         allowNull: true,
         type: DataTypes.INTEGER
       },
-      period: {
-        allowNull: true,
-        type: DataTypes.STRING
-      }
     },
     {
       sequelize,

@@ -1,0 +1,19 @@
+type Candidate {
+  id: ID!
+  name: String!
+  PoliticalPartyOwner: PoliticalParty!
+  PoliticalParty: [PoliticalParty!]
+}
+
+type Query {
+  getCandidatesByPeriod(periodId: ID!): [Candidate!]
+}
+
+type Mutation {
+  createCandidate(input: CreateCandidateInput!) Candidate!
+}
+
+input CreateCandidateInput {
+  name: String!
+  politicalPartyId: ID!
+}

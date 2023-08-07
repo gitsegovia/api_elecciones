@@ -1,0 +1,15 @@
+type Period {
+  id: ID!
+  name: String!
+  Candidate: [Candidate!]
+}
+
+type Query {
+  getPeriod(period: String!): Period!
+  getAllPeriod: [Period!]
+}
+
+type Mutation {
+  createPeriod(period: String!): Period!
+  deletePeriod(periodId: ID!): Boolean!
+}

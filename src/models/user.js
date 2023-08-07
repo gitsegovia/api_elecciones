@@ -47,7 +47,7 @@ export default (sequelize) => {
       active: {
         allowNull: true,
         type: DataTypes.BOOLEAN,
-        defaultValue: false
+        defaultValue: true
       },
       typeSuspension: {
         allowNull: true,

@@ -42,6 +42,21 @@ type Query {
 type Mutation {
   login(input: LoginInput!): AuthPayLoad!
   checkToken(token: String): AuthPayLoad!
+  createUser(input: CreateUserInput!): User!
+}
+
+input CreateUserInput {
+  username: String!
+  password: String!
+  privilege: String!
+  role: String!
+  firstName: String!
+  lastName: String!
+  dni: String!
+  gender: String!
+  phoneNumber: String!
+  photo: String!
+  dniImg: String!
 }
 
 input LoginInput {
