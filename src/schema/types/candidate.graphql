@@ -6,11 +6,13 @@ type Candidate {
 }
 
 type Query {
+  getAllCandidates: [Candidate!]
   getCandidatesByPeriod(periodId: ID!): [Candidate!]
 }
 
 type Mutation {
   createCandidate(input: CreateCandidateInput!): Candidate!
+  deleteCandidate(candidateId: ID!): Boolean!
 }
 
 input CreateCandidateInput {

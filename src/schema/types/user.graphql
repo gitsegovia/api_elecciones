@@ -43,6 +43,7 @@ type Mutation {
   login(input: LoginInput!): AuthPayLoad!
   checkToken(token: String): AuthPayLoad!
   createUser(input: CreateUserInput!): User!
+  deleteUser(userId: ID!): Boolean!
 }
 
 input CreateUserInput {

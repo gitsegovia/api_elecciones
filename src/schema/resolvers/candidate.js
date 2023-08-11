@@ -3,6 +3,9 @@ import CustomConsole from "../../utils/customConsole";
 
 export default{
   Query: {
+    getAllCandidates: (_, _args, { models }) => {
+      return models.Candidate.findAll();
+    },
     getCandidatesByPeriod: (_, { periodId }, { models }) => {
       return models.Candidate.findAll({
         where: {
@@ -40,11 +43,34 @@ export default{
           
         } catch (error) {
           t.rollback();
-          CustomConsole({origin: 'createPeriod', info: { error }, type: 'error'})
+          CustomConsole({origin: 'createCandidate', info: { error }, type: 'error'})
           throw new SyntaxError(error)
         }
       }else{
         throw new ValidationError("PoliticalParty not found");
+      }
+    },
+    deleteCandidate: async (_, { candidateId }, { models }) => {
+      if (candidateId.trim() === "") {
+        throw new ValidationError("Candidate ID required");
+      }
+
+      const t = await models.sequelize.transaction();
+      try {
+        await models.Candidate.destroy({
+          where: {
+            id: candidateId
+          },
+          transaction: t
+        });
+
+        t.commit();
+        return true;
+        
+      } catch (error) {
+        t.rollback();
+        CustomConsole({origin: 'deleteCandidate', info: { error }, type: 'error'})
+        throw new SyntaxError(error)
       }
     }
   }
