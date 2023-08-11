@@ -95,5 +95,41 @@ export default {
         throw new SyntaxError(error)
       }
     },
+    deleteUser: async (_, { userId }, { models }) => {
+      if (userId.trim() === "") {
+        throw new ValidationError("User ID required");
+      }
+
+      const user = await models.User.findByPk(userId);
+
+      if(!user){
+        throw new ValidationError("User not found");
+      }
+
+      const t = await models.sequelize.transaction();
+      try {
+        await models.Employee.destroy({
+          where: {
+            id: user.employeeId
+          },
+          transaction: t
+        });
+        
+        await models.User.destroy({
+          where: {
+            id: userId
+          },
+          transaction: t
+        });
+
+        t.commit();
+        return true;
+        
+      } catch (error) {
+        t.rollback();
+        CustomConsole({origin: 'deleteUser', info: { error }, type: 'error'})
+        throw new SyntaxError(error)
+      }
+    }
   },
 };
